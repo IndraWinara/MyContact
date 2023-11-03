@@ -4,6 +4,13 @@ import { NextResponse } from "next/server"
 
 export const GET = async (request) => {
     try {
+        const token = request.cookies.get('token')?.value || ''
+        if(!token){
+            return NextResponse.json({
+                success : false,
+                message : `Unauthorize User`
+            },{status : 400})
+        }
         const userId = getUserInfo(request)
         const userInfo = await Users.findOne({ _id: userId })
             .select('-password')

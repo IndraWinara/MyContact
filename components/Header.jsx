@@ -1,14 +1,25 @@
-import React from 'react'
+import React from "react";
 
 const Header = () => {
   return (
-    <div className='fixed z-10 top-0 w-full bg-slate-700 text-white h-[100px] flex justify-center items-center'>
-        <div className='flex flex-col text-center gap-2'>
-        <h1 className='font-bold'>MY-Contact Rest API</h1>
-        <h1 className='w-full text-[14px]'><span className='font-semibold'>Base Url :</span> <span className='italic'>https://my-contacts-apps.vercel.app/api</span>  </h1>
+    <div className="flex justify-center items-center gap-10 w-[370px] bg-sky-400 h-[70px] rounded-t-[50px]">
+      <div className="flex w-[15px] h-[15px] bg-slate-700 rounded-full"></div>
+      <div className="flex flex-col gap-1 justify-center items-center">
+        <div className="flex gap-1 items-center justify-center w-[60px] h-[10px] bg-slate-700 rounded-full">
+        <div className='flex w-[5px] h-[5px] bg-white rounded-full'></div>
+        <div className='flex w-[5px] h-[5px] bg-white rounded-full'></div>
+        <div className='flex w-[5px] h-[5px] bg-white rounded-full'></div>
+        <div className='flex w-[5px] h-[5px] bg-white rounded-full'></div>
+        <div className='flex w-[5px] h-[5px] bg-white rounded-full'></div>
+        </div>
+        <h1 className="font-extrabold text-white mt-[-4px]">SAMSUNG</h1>
+      </div>
+      <div className="flex gap-2 items-center">
+        <div className="flex w-[23px] h-[23px] bg-black rounded-full"></div>
+        <div className="flex w-[15px] h-[15px] bg-black rounded-full"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

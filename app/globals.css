@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-login {
+    background-image: url('https://wallpapertag.com/wallpaper/full/1/b/4/879542-new-samsung-wallpaper-gallery-1440x2560-for-pc.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

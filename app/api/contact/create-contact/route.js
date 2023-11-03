@@ -8,6 +8,13 @@ import { NextResponse } from "next/server"
 
 export const POST = async (request) => {
     try {
+        const token = request.cookies.get('token')?.value || ''
+        if(!token){
+            return NextResponse.json({
+                success : false,
+                message : `Unauthorize User`
+            },{status : 400})
+        }
         const { name, birthday, relation, email, phone, image_url, job, address } = await request.json()
         await connectDb()
         //cek user login
@@ -38,6 +45,13 @@ export const POST = async (request) => {
 export const DELETE = async (request) => {
     const contactId = await request.nextUrl.searchParams.get('id');
     try {
+        const token = request.cookies.get('token')?.value || ''
+        if(!token){
+            return NextResponse.json({
+                success : false,
+                message : `Unauthorize User`
+            },{status : 400})
+        }
         await connectDb();
         const deletedContact = await Contacts.findByIdAndDelete({ _id: contactId });
         
@@ -64,6 +78,13 @@ export const DELETE = async (request) => {
 export const PATCH = async (request)=>{
 
     try {
+        const token = request.cookies.get('token')?.value || ''
+        if(!token){
+            return NextResponse.json({
+                success : false,
+                message : `Unauthorize User`
+            },{status : 400})
+        }
         const contactId = await request.nextUrl.searchParams.get('id');
         const dataUpdate = await request.json()
         await connectDb()

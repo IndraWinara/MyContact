@@ -5,6 +5,13 @@ import { NextResponse } from "next/server"
 
 export const POST = async (request) => {
     try {
+        const token = request.cookies.get('token')?.value || ''
+        if(!token){
+            return NextResponse.json({
+                success : false,
+                message : `Unauthorize User`
+            },{status : 400})
+        }
         const contactId = await request.nextUrl.searchParams.get('id')
         const { job_name,position,location } = await request.json()
         await connectDb()
@@ -32,6 +39,13 @@ export const POST = async (request) => {
 
 export const DELETE = async (request)=>{
     try {
+        const token = request.cookies.get('token')?.value || ''
+        if(!token){
+            return NextResponse.json({
+                success : false,
+                message : `Unauthorize User`
+            },{status : 400})
+        }
         const jobsId = await request.nextUrl.searchParams.get('id')
         await connectDb();
         await Jobs.findByIdAndDelete({ _id: jobsId });
@@ -51,6 +65,13 @@ export const DELETE = async (request)=>{
 export const PATCH = async (request)=>{
 
     try {
+        const token = request.cookies.get('token')?.value || ''
+        if(!token){
+            return NextResponse.json({
+                success : false,
+                message : `Unauthorize User`
+            },{status : 400})
+        }
         const jobsId = await request.nextUrl.searchParams.get('id');
         const dataUpdate = await request.json()
         await connectDb()
